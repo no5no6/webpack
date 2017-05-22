@@ -11,6 +11,8 @@ import axios from 'axios';
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 import store from './store';
+import moment from 'moment';
+import _ from 'lodash';
 
 Vue.config.productionTip = false{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
@@ -31,6 +33,10 @@ store.host = `http://${sessionStorage.getItem("domain")}`;
 Vue.prototype.$kuyun = store;
 // axios写入vue对象。
 Vue.prototype.axios = axios;
+// 全局变量写入moment。
+Vue.prototype.moment = moment;
+// lodash写入vue对象。
+Vue.prototype.lodash = _;
 
 Vue.use(iView);
 
