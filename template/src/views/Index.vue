@@ -12,7 +12,7 @@ export default {
   name: 'Index',
   data() {
     return {
-      msg:
+      msg: '',
     }
   },
   methods: {
