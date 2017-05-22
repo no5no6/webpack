@@ -7,8 +7,32 @@ import App from './App'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{#router}}
 import router from './router'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/router}}
+import axios from 'axios';
+import iView from 'iview';
+import 'iview/dist/styles/iview.css';
+import store from './store';
 
 Vue.config.productionTip = false{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+
+// axios Header中添加token
+axios.interceptors.request.use(
+  config => {
+    config.headers.accessTocken = sessionStorage.getItem("accessTocken");
+    return config;
+  },
+  err => {
+    return Promise.reject(err);
+});
+
+// 设置host
+store.host = `http://${sessionStorage.getItem("domain")}`;
+
+// 全局变量写入vue对象。
+Vue.prototype.$kuyun = store;
+// axios写入vue对象。
+Vue.prototype.axios = axios;
+
+Vue.use(iView);
 
 /* eslint-disable no-new */
 new Vue({
