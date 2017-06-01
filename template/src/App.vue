@@ -43,12 +43,12 @@ export default {
   methods: {
     init() {
       let param = this.GetUrlParam();
-      console.log(param, 'url-param');
       // 设置host
       this.$kuyun.host = param.domain ? `http://${param.domain}` : `http://${sessionStorage.getItem("domain")}`;
 
       // 左侧菜单数据api地址
-      this.apiUrl = `${this.$kuyun.host}/getAuthList`;
+      //this.apiUrl = param.domain ? `${this.$kuyun.host}/getAuthList` : 'http://bytest.cards.kuyun.com/getAuthList';
+      this.apiUrl = this.$kuyun.host === 'http://null' ? '' : `${this.$kuyun.host}/getAuthList`;
 
       // 把 sessionId 存在sessionStorage中
       if(param.accessTocken){
@@ -61,7 +61,7 @@ export default {
       }
 
       // 设置菜单选中项
-      this.setMenu(param.page);
+      this.setMenu(param.page || 'GlobalCards');
 
       // 页面初始化数据
       this.initData();
@@ -84,7 +84,7 @@ export default {
       // 设置选中菜单及选中菜单需展示的右侧内容
       this.webMenu.forEach(({pageName, srcId}, index) => {
         if(pageName === name) {
-          this.currentMenu = index+1;
+          this.currentMenu = index;
           if(query){
             this.$router.push({path: srcId, query});
           }else {

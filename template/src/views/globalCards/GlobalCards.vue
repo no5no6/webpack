@@ -12,7 +12,6 @@ export default {
   name: 'GlobalCards',
   data() {
     return {
-      },
     }
   },
   methods: {
