@@ -1,34 +1,30 @@
-<template>
+<!-- <template>
   <div >
-    <hello></hello>
   </div>
 </template>
 
 <script>
 
-import Hello from '../components/Hello';
-
 export default {
-  name: 'Index',
+  name: 'Prompt',
   data() {
     return {
-      msg: '',
     }
   },
   methods: {
     init() {
-      console.log('项目初始化');
-    }
+
+    },
   },
   mounted() {
     this.init();
   },
   components: {
-    Hello
   }
+
 }
 </script>
 
-<style>
+<style scoped>
 
-</style>
+</style> -->

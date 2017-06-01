@@ -1,7 +1,9 @@
-import CreateCard from './CreateCard';
-
+/**
+  全局变量
+  TODO: 尽量少使用全局属性
+  1、如果父子组件参数更改与传递可以用计算属性。
+  2、如果兄弟组件参数更改与传递可以用bus绑定事件。
+*/
 export default {
-  host: '',
-  accessTocken: '',
-  CreateCard:CreateCard,
+  //host: '',
 }

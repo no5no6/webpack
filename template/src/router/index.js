@@ -1,15 +1,27 @@
-import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-import Router from 'vue-router'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-import Index from '@/views/Index';
+import Vue from 'vue';
+import Router from 'vue-router';
+import GlobalCards from '@/views/globalCards/GlobalCards';
+import ColumnList from '@/views/column/List';
 
-Vue.use(Router){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+Vue.use(Router)
 
 export default new Router({
+  // mode: 'history',
   routes: [
+    // {
+    //   path: '/',
+    //   name: 'Index',
+    //   component: GlobalCards
+    // },
     {
-      path: '/',
-      name: 'Index',
-      component: Index
-    }
-  ]
-});
+      path: '/globalcards',
+      name: 'GlobalCards',
+      component: GlobalCards
+    },
+    {
+      path: '/columnlist',
+      name: 'ColumnList',
+      component: ColumnList
+    },
+  ],
+})

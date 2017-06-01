@@ -1,56 +1,49 @@
-{{#if_eq build "standalone"}}
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-{{/if_eq}}
-import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-import App from './App'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-{{#router}}
-import router from './router'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-{{/router}}
+import Vue from 'vue';
+import App from './App';
+import router from './router';
 import axios from 'axios';
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 import store from './store';
 import moment from 'moment';
 import _ from 'lodash';
+import coolComponents from './coolComponents';
 
-Vue.config.productionTip = false{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+Vue.config.productionTip = false;
 
-// axios Header中添加token
 axios.interceptors.request.use(
   config => {
+    console.log(sessionStorage.getItem("accessTocken"), 'sessionStorage.getItem("accessTocken")');
     config.headers.accessTocken = sessionStorage.getItem("accessTocken");
     return config;
   },
   err => {
     return Promise.reject(err);
-});
+  });
 
 // 设置host
-store.host = `http://${sessionStorage.getItem("domain")}`;
+// store.host = `http://${sessionStorage.getItem("domain")}`;
+// console.log(store.host, '999this.$kuyun.host111111');
 
 // 全局变量写入vue对象。
 Vue.prototype.$kuyun = store;
-// axios写入vue对象。
-Vue.prototype.axios = axios;
 // 全局变量写入moment。
 Vue.prototype.moment = moment;
+// axios写入vue对象。
+Vue.prototype.axios = axios;
 // lodash写入vue对象。
 Vue.prototype.lodash = _;
 
 Vue.use(iView);
+Vue.use(coolComponents);
+
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  {{#router}}
   router,
-  {{/router}}
-  {{#if_eq build "runtime"}}
-  render: h => h(App){{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  {{/if_eq}}
-  {{#if_eq build "standalone"}}
   template: '<App/>',
-  components: { App }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  {{/if_eq}}
-}){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  components: { App }
+})
