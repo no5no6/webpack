@@ -9,7 +9,7 @@ import 'iview/dist/styles/iview.css';
 import store from './store';
 import moment from 'moment';
 import _ from 'lodash';
-import coolComponents from './coolComponents';
+import coolComponents from 'cool-components';
 
 Vue.config.productionTip = false;
 
@@ -22,10 +22,6 @@ axios.interceptors.request.use(
   err => {
     return Promise.reject(err);
   });
-
-// 设置host
-// store.host = `http://${sessionStorage.getItem("domain")}`;
-// console.log(store.host, '999this.$kuyun.host111111');
 
 // 全局变量写入vue对象。
 Vue.prototype.$kuyun = store;

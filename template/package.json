@@ -14,12 +14,13 @@
     "lint": "eslint --ext .js,.vue src{{#unit}} test/unit/specs{{/unit}}{{#e2e}} test/e2e/specs{{/e2e}}"{{/lint}}
   },
   "dependencies": {
-    "vue": "^2.2.6"{{#router}},
+    "vue": "^2.2.6",
     "axios": "^0.16.1",
     "iview": "^2.0.0-rc.13",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
-    "vue-router": "^2.3.1"{{/router}}
+    "vue-router": "^2.3.1",
+    "cool-components": "git+https://git.in.kuyun.com/web-team/cool-components.git"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
