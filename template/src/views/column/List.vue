@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="page-layout">
     ColumnList页面
   </div>
 </template>
@@ -32,5 +32,8 @@ export default {
 </script>
 
 <style scoped>
-
+  .page-layout {
+    margin-left: 20px;
+    margin-top: 20px;
+  }
 </style>

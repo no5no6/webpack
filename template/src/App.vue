@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="heightWidth100">
-    <CoolSideMenu :webMenu="webMenu" :apiUrl="apiUrl" :currentMenu="currentMenu" @setCurrentPage="setCurrentPage" @setWebMenu="setWebMenu"></CoolSideMenu>
+    <CoolSideMenu :webMenu="webMenu" :currentMenu="currentMenu" @setCurrentPage="setCurrentPage" @setWebMenu="setWebMenu"></CoolSideMenu>
   </div>
 </template>
 
@@ -17,25 +17,13 @@ export default {
       webMenu: [
         {
           id: 10001,
-          pageName: 'GlobalCards',
           nodeName: "WEB模块化卡片",
-          isWeb: true,
-          srcId: '/globalcards'
-          // childList: [
-          //   {
-          //     id: 10002,
-          //     srcId: "webGolbal",
-          //     nodeName: "模块化卡片",
-          //     isWeb: true,
-          //   }
-          // ]
+          srcId: '/globalcards?web=true'
         },
         {
           id: 10002,
-          pageName: 'ColumnList',
           nodeName: "WEB针对栏目",
-          isWeb: true,
-          srcId: '/columnlist'
+          srcId: '/columnlist?web=true'
         }
       ]
     }
@@ -60,8 +48,8 @@ export default {
       //设置没有ad级的路径 传给后台  组件接收host
       this.host = param.domain ? `http://${param.domain}` : `http://${sessionStorage.getItem("domain")}`;
 
-      // 设置左侧菜单
-      this.apiUrl = `${this.$kuyun.host}/ad/getMenuInfo`;
+      // 设置左侧菜单 (需要传递给组件 <CoolSideMenu :apiUrl="apiUrl" ></CoolSideMenu>)
+      this.apiUrl = `${this.$kuyun.host}/getMenuInfo`;
 
       // 把 sessionId 存在sessionStorage中
       if(param.accessTocken){

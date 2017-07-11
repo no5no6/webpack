@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="page-layout">
     GlobalCards页面
     <hello></hello>
   </div>
@@ -34,5 +34,8 @@ export default {
 </script>
 
 <style scoped>
-
+  .page-layout {
+    margin-left: 20px;
+    margin-top: 20px;
+  }
 </style>
