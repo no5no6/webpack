@@ -15,7 +15,6 @@ Vue.config.productionTip = false;
 
 axios.interceptors.request.use(
   config => {
-    console.log(sessionStorage.getItem("accessTocken"), 'sessionStorage.getItem("accessTocken")');
     config.headers.accessTocken = sessionStorage.getItem("accessTocken");
     return config;
   },

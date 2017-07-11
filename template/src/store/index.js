@@ -5,5 +5,5 @@
   2、如果兄弟组件参数更改与传递可以用bus绑定事件。
 */
 export default {
-  //host: '',
+  host: '',
 }
